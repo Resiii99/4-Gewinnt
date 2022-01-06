@@ -4,3 +4,4 @@ Im Spiel "4 gewinnt" wird auf einem senkrecht stehenden und hohlen Spielbrett ge
 
 In unserer programmierten Variante des Spiels wird gegen einen Computergegner gespielt. 
 [... weitere Beschreibung des technischen Spielablaufs folgt]
+[...Dies ist eine Teständerung zum Üben der Commits]
