@@ -6,4 +6,6 @@ class VierGewinnt:
 
     def get_spalte(self, index):
         return [i[index] for i in self.spielbrett]
-    
+
+    def get_reihe(self, index):
+        return self.spielbrett[index]
