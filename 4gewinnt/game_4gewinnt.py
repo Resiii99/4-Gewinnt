@@ -69,3 +69,15 @@ class VierGewinnt:
         Überprüft das Spielbrett nach jedem Spielzug auf eine der beiden Gewinnvarianten. 4 X oder O in einer Reihe (Reihe, Spalte, Diagonale)
         """
         vier_in_einer_reihe = [['X', 'X', 'X', 'X'], ['O', 'O', 'O', 'O']]
+
+        # Reihencheck:
+        for i in range(self.hoehe):
+            for j in range(self.breite - 3):
+                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe:
+                    return self.spielbrett[i][j]
+
+        # Spaltencheck:
+        for i in range(self.breite):
+            for j in range(self.hoehe - 3):
+                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe:
+                    return self.spielbrett[j][i]
