@@ -87,3 +87,5 @@ class VierGewinnt:
             for j, _ in enumerate(i):
                 if i[j:j + 4] in vier_in_einer_reihe:
                     return i[j]
+
+        return None
