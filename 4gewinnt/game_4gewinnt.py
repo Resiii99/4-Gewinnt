@@ -81,3 +81,9 @@ class VierGewinnt:
             for j in range(self.hoehe - 3):
                 if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe:
                     return self.spielbrett[j][i]
+
+        #Diagonalencheck:
+        for i in self.get_diagonale():
+            for j, _ in enumerate(i):
+                if i[j:j + 4] in vier_in_einer_reihe:
+                    return i[j]
