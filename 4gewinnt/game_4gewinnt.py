@@ -9,3 +9,18 @@ class VierGewinnt:
 
     def get_reihe(self, index):
         return self.spielbrett[index]
+
+    def get_diagonale(self):
+        diagonale = []
+
+        for i in range(self.hoehe + self.breite - 1):
+            diagonale.append([])
+            for j in range(max(i - self.hoehe + 1, 0), min(i + 1, self.hoehe)):
+                diagonale[i].append(self.spielbrett[self.hoehe - i + j - 1][j])
+
+        for i in range(self.hoehe + self.breite - 1):
+            diagonale.append([])
+            for j in range(max(i - self.hoehe + 1, 0), min(i + 1, self.hoehe)):
+                diagonale[i].append(self.spielbrett[i - j][j])
+
+        return diagonale
