@@ -63,3 +63,6 @@ class VierGewinnt:
             i -= 1
         self.spielbrett[i][spl] = team
         return self.spielbrett
+
+    def check_gewonnen(self):
+        vier_in_einer_reihe = [['X', 'X', 'X', 'X'], ['O', 'O', 'O', 'O']]
