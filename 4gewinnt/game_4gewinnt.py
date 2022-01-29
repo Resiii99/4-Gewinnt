@@ -65,4 +65,7 @@ class VierGewinnt:
         return self.spielbrett
 
     def check_gewonnen(self):
+        """
+        Überprüft das Spielbrett nach jedem Spielzug auf eine der beiden Gewinnvarianten. 4 X oder O in einer Reihe (Reihe, Spalte, Diagonale)
+        """
         vier_in_einer_reihe = [['X', 'X', 'X', 'X'], ['O', 'O', 'O', 'O']]
