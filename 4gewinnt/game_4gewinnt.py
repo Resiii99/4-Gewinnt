@@ -47,3 +47,13 @@ class VierGewinnt:
                 diagonale[i].append(self.spielbrett[i - j][j])
 
         return diagonale
+
+
+    def spielzug_machen(self, team, spl):
+        if ' ' not in self.get_spalte(spl):
+            return self.spielbrett
+        i = self.hoehe - 1
+        while self.spielbrett[i][spl] != ' ':
+            i -= 1
+        self.spielbrett[i][spl] = team
+        return self.spielbrett
