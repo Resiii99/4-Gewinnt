@@ -50,6 +50,12 @@ class VierGewinnt:
 
 
     def spielzug_machen(self, team, spl):
+        """
+        Macht einen Spielzug --> Setzt in der angegebenen Spalte ein X oder O an die unterste freie Stelle einer Spalte
+        :param team: X oder O
+        :param spl: Spalte, die vom Spieler per Input ausgewählt wird
+        """
+
         if ' ' not in self.get_spalte(spl):
             return self.spielbrett
         i = self.hoehe - 1
