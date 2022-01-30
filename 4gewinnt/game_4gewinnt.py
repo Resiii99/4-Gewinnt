@@ -102,3 +102,11 @@ def spiel_starten():
 
     spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
     spiel.spielzug_machen('X', spl)
+
+    for i in spiel.spielbrett:
+        print(i)
+    if spiel.check_gewonnen() is not None:
+        break
+
+    spl = int(input('Spieler 2 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
+    spiel.spielzug_machen('O', spl)
