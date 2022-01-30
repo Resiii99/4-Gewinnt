@@ -90,3 +90,7 @@ class VierGewinnt:
                     return i[j]
 
         return None
+
+
+def spiel_starten():
+    spiel = VierGewinnt()
