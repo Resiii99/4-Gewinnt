@@ -100,17 +100,22 @@ def spiel_starten():
     """
     spiel = VierGewinnt()
 
-    for i in spiel.spielbrett:
-        print(i)
+    while True:
 
-    spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
-    spiel.spielzug_machen('X', spl)
+        for i in spiel.spielbrett:
+            print(i)
+        if spiel.check_gewonnen() is not None:
+            break
 
-    for i in spiel.spielbrett:
-        print(i)
+        spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
+        spiel.spielzug_machen('X', spl)
 
-    spl = int(input('Spieler 2 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
-    spiel.spielzug_machen('O', spl)
+        for i in spiel.spielbrett:
+            print(i)
+        if spiel.check_gewonnen() is not None:
+            break
 
-    if spiel.check_gewonnen() is not None:
-        print('Danke, super gespielt!')
+        spl = int(input('Spieler 2 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
+        spiel.spielzug_machen('O', spl)
+
+    print('Danke, super gespielt!')
