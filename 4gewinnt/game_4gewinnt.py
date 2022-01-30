@@ -48,7 +48,6 @@ class VierGewinnt:
 
         return diagonale
 
-
     def spielzug_machen(self, team, spl):
         """
         Macht einen Spielzug --> Setzt in der angegebenen Spalte ein X oder O an die unterste freie Stelle einer Spalte
@@ -67,7 +66,8 @@ class VierGewinnt:
     def check_gewonnen(self):
         """
         Überprüft das Spielbrett nach jedem Spielzug auf eine der beiden Gewinnvarianten.
-        4 X oder O in einer Reihe (Reihe, Spalte, Diagonale). Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.
+        4 X oder O in einer Reihe (Reihe, Spalte, Diagonale).
+        Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.
         """
         vier_in_einer_reihe = [['X', 'X', 'X', 'X'], ['O', 'O', 'O', 'O']]
 
@@ -83,7 +83,7 @@ class VierGewinnt:
                 if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe:
                     return self.spielbrett[j][i]
 
-        #Diagonalencheck:
+        # Diagonalencheck:
         for i in self.get_diagonale():
             for j, _ in enumerate(i):
                 if i[j:j + 4] in vier_in_einer_reihe:
@@ -93,6 +93,11 @@ class VierGewinnt:
 
 
 def spiel_starten():
+    """
+    Startet ein Spiel. Das Spielfeld wird dargestellt, die Spieler werden nacheinander zum Input aufgefordert und
+    ihre Spielzüge werden durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers
+    wird abgebrochen.
+    """
     spiel = VierGewinnt()
 
     for i in spiel.spielbrett:
