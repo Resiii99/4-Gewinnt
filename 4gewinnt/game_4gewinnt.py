@@ -101,3 +101,4 @@ def spiel_starten():
         break
 
     spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
+    spiel.spielzug_machen('X', spl)
