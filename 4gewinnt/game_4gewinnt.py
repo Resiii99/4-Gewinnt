@@ -97,5 +97,7 @@ def spiel_starten():
 
     for i in spiel.spielbrett:
         print(i)
+    if spiel.check_gewonnen() is not None:
+        break
 
     spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
