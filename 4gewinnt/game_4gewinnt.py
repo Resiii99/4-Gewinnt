@@ -94,3 +94,6 @@ class VierGewinnt:
 
 def spiel_starten():
     spiel = VierGewinnt()
+
+    for i in spiel.spielbrett:
+        print(i)
