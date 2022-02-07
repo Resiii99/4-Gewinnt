@@ -69,24 +69,34 @@ class VierGewinnt:
         4 X oder O in einer Reihe (Reihe, Spalte, Diagonale).
         Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.
         """
-        vier_in_einer_reihe = [['X', 'X', 'X', 'X'], ['O', 'O', 'O', 'O']]
+        vier_in_einer_reihe_X = [['X', 'X', 'X', 'X']]
+        vier_in_einer_reihe_O = [['O', 'O', 'O', 'O']]
 
         # Reihencheck:
         for i in range(self.hoehe):
             for j in range(self.breite - 3):
-                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe:
+                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_X:
+                    return self.spielbrett[i][j]
+
+                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_O:
                     return self.spielbrett[i][j]
 
         # Spaltencheck:
         for i in range(self.breite):
             for j in range(self.hoehe - 3):
-                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe:
+                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_X:
+                    return self.spielbrett[j][i]
+
+                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_O:
                     return self.spielbrett[j][i]
 
         # Diagonalencheck:
         for i in self.get_diagonale():
             for j, _ in enumerate(i):
-                if i[j:j + 4] in vier_in_einer_reihe:
+                if i[j:j + 4] in vier_in_einer_reihe_X:
+                    return i[j]
+                    
+                if i[j:j + 4] in vier_in_einer_reihe_O:
                     return i[j]
 
         return None
@@ -106,18 +116,30 @@ def spiel_starten():
             print(i)
         if spiel.check_gewonnen() is not None:
             break
+        else:
+            sieger = 1
 
-        spl = int(input('Spieler 1 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
-        spiel.spielzug_machen('X', spl)
+        spl = int(input(f'Spieler 1 – Bitte Spalte von 1 bis {spiel.breite} auswählen: ')) - 1
+        
+        if spl > -1 and spl < spiel.breite:
+            spiel.spielzug_machen('X', spl)
+        else:
+            print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {spiel.breite} ein!')
 
         for i in spiel.spielbrett:
             print(i)
         if spiel.check_gewonnen() is not None:
             break
+        else:
+            sieger = 2
 
-        spl = int(input('Spieler 2 – Bitte Spalte von 1 bis 7 auswählen: ')) - 1
-        spiel.spielzug_machen('O', spl)
+        spl = int(input(f'Spieler 2 – Bitte Spalte von 1 bis {spiel.breite} auswählen: ')) - 1
+        
+        if spl > -1 and spl < spiel.breite:
+            spiel.spielzug_machen('O', spl)
+        else:
+            print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {spiel.breite} ein!')
 
-    print('Danke, super gespielt!')
+    print (f'Gratuliere Spieler {sieger}, du hast gewonnen!')
 
 spiel_starten()
