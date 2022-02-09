@@ -102,44 +102,46 @@ class VierGewinnt:
         return None
 
 
-def spiel_starten():
-    """
-    Startet ein Spiel. Das Spielfeld wird dargestellt, die Spieler werden nacheinander zum Input aufgefordert und
-    ihre Spielzüge werden durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers
-    wird abgebrochen.
-    """
-    spiel = VierGewinnt()
+    def spiel_starten(self):
+        """
+        Startet ein Spiel. Das Spielfeld wird dargestellt, die Spieler werden nacheinander zum Input aufgefordert und
+        ihre Spielzüge werden durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers
+        wird abgebrochen.
+        """
 
-    while True:
+        while True:
 
-        for i in spiel.spielbrett:
-            print(i)
-        if spiel.check_gewonnen() is not None:
-            break
-        else:
-            sieger = 1
+            for i in self.spielbrett:
+                print(i)
+            if self.check_gewonnen() is not None:
+                break
+            else:
+                sieger = 1
 
-        spl = int(input(f'Spieler 1 – Bitte Spalte von 1 bis {spiel.breite} auswählen: ')) - 1
-        
-        if spl > -1 and spl < spiel.breite:
-            spiel.spielzug_machen('X', spl)
-        else:
-            print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {spiel.breite} ein!')
+            spl = int(input(f'Spieler 1 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
+            
+            if spl > -1 and spl < self.breite:
+                self.spielzug_machen('X', spl)
+            else:
+                print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
-        for i in spiel.spielbrett:
-            print(i)
-        if spiel.check_gewonnen() is not None:
-            break
-        else:
-            sieger = 2
+            for i in self.spielbrett:
+                print(i)
+            if self.check_gewonnen() is not None:
+                break
+            else:
+                sieger = 2
 
-        spl = int(input(f'Spieler 2 – Bitte Spalte von 1 bis {spiel.breite} auswählen: ')) - 1
-        
-        if spl > -1 and spl < spiel.breite:
-            spiel.spielzug_machen('O', spl)
-        else:
-            print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {spiel.breite} ein!')
+            spl = int(input(f'Spieler 2 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
+            
+            if spl > -1 and spl < self.breite:
+                self.spielzug_machen('O', spl)
+            else:
+                print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
-    print (f'Gratuliere Spieler {sieger}, du hast gewonnen!')
+        print (f'Gratuliere Spieler {sieger}, du hast gewonnen!')
 
-spiel_starten()
+if __name__ == '__main__':
+    viergewinntS=VierGewinnt(4,5)
+    viergewinntS.spiel_starten()
+
