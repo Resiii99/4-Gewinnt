@@ -14,19 +14,33 @@ class VierGewinnt:
         self.breite = breite
         self.spielbrett = [[' ' for x in range(breite)] for i in range(hoehe)]
 
-    def get_spalte(self, index):
+    def get_spalte(self, index: int):
         """
         Gibt eine Spalte am angegebenen Index aus
 
-        :param index: Index, welche Spalte ausgegeben wird
+        Parameter
+        -------------
+        index:  int
+                Index, welche Spalte ausgegeben wird
+
+        Returns
+        -------------
+        List: Spalte
         """
         return [i[index] for i in self.spielbrett]
 
-    def get_reihe(self, index):
+    def get_reihe(self, index: int):
         """
         Gibt eine Reihe am angegebenen Index aus
 
-        :param index: Index, welche Reihe ausgegeben wird
+        Parameter
+        -------------
+        index:  int
+                Index, welche Reihe ausgegeben wird
+
+        Returns
+        -------------
+        List: Reihe
         """
         return self.spielbrett[index]
 
@@ -48,11 +62,21 @@ class VierGewinnt:
 
         return diagonale
 
-    def spielzug_machen(self, team, spl):
+    def spielzug_machen(self, team: str, spl: int):
         """
         Macht einen Spielzug --> Setzt in der angegebenen Spalte ein X oder O an die unterste freie Stelle einer Spalte
-        :param team: X oder O
-        :param spl: Spalte, die vom Spieler per Input ausgewählt wird
+
+        Parameter
+        -------------
+        team:   str
+                X oder O
+        spl:    int
+                Spalte, die vom Spieler per Input ausgewählt wird
+
+        Returns
+        -------------
+        List: Spielbrett
+
         """
 
         if ' ' not in self.get_spalte(spl):
@@ -100,7 +124,6 @@ class VierGewinnt:
                     return i[j]
 
         return None
-
 
     def spiel_starten(self):
         """
