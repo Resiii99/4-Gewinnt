@@ -10,7 +10,7 @@ Welcome to Vier gewinnt's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   allgemein
+   design
    modules
 
 Indices and tables
