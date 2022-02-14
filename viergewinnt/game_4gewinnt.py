@@ -100,28 +100,28 @@ class VierGewinnt:
         for i in range(self.hoehe):
             for j in range(self.breite - 3):
                 if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_X:
-                    return self.spielbrett[i][j]
+                    return "Spieler 1"
 
                 if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_O:
-                    return self.spielbrett[i][j]
+                    return "Spieler 2"
 
         # Spaltencheck:
         for i in range(self.breite):
             for j in range(self.hoehe - 3):
                 if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_X:
-                    return self.spielbrett[j][i]
+                    return "Spieler 1"
 
                 if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_O:
-                    return self.spielbrett[j][i]
+                    return "Spieler 2"
 
         # Diagonalencheck:
         for i in self.get_diagonale():
             for j, _ in enumerate(i):
                 if i[j:j + 4] in vier_in_einer_reihe_X:
-                    return i[j]
-                    
+                    return "Spieler 1"
+
                 if i[j:j + 4] in vier_in_einer_reihe_O:
-                    return i[j]
+                    return "Spieler 2"
 
         return None
 
@@ -138,8 +138,6 @@ class VierGewinnt:
                 print(i)
             if self.check_gewonnen() is not None:
                 break
-            else:
-                sieger = 1
 
             spl = int(input(f'Spieler 1 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
             
@@ -152,8 +150,6 @@ class VierGewinnt:
                 print(i)
             if self.check_gewonnen() is not None:
                 break
-            else:
-                sieger = 2
 
             spl = int(input(f'Spieler 2 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
             
@@ -162,9 +158,8 @@ class VierGewinnt:
             else:
                 print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
-        print (f'Gratuliere Spieler {sieger}, du hast gewonnen!')
+        print (f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
 
 if __name__ == '__main__':
-    viergewinntS=VierGewinnt(4,5)
-    viergewinntS.spiel_starten()
-
+    meinspiel = VierGewinnt(7,7)
+    meinspiel.spiel_starten()
