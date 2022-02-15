@@ -139,7 +139,7 @@ class VierGewinnt:
             if self.check_gewonnen() is not None:
                 break
 
-            spl = int(input(f'Spieler 1 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
+            spl = int(input(f'Spieler 1 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
             
             if spl > -1 and spl < self.breite:
                 self.spielzug_machen('X', spl)
@@ -151,7 +151,7 @@ class VierGewinnt:
             if self.check_gewonnen() is not None:
                 break
 
-            spl = int(input(f'Spieler 2 – Bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
+            spl = int(input(f'Spieler 2 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
             
             if spl > -1 and spl < self.breite:
                 self.spielzug_machen('O', spl)
