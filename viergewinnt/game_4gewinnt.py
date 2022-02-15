@@ -160,7 +160,7 @@ class VierGewinnt:
             if spl > -1 and spl < self.breite:
                 self.spielzug_machen('O', spl)
             else:
-                print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+                print(f'Bitte geben Sie in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
         print (f'Gratuliere Spieler {sieger}, du hast gewonnen!')
 
