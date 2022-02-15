@@ -3,7 +3,7 @@ Module Docstring
 Spieler 1 hat den Spielstein X
 Spieler 2 hat den Spielstein O
 """
-
+from random import randint
 
 class VierGewinnt:
     """
@@ -87,6 +87,14 @@ class VierGewinnt:
         self.spielbrett[i][spl] = team
         return self.spielbrett
 
+    def alle_Felder_bespielt(self):
+        """
+        Überprüft ob auf dem Spielbrett noch Felder frei sind.
+        Falls dies nicht der Fall ist soll das Spiel beeendet werden.
+        """
+        maxspielsteine = self.breite*self.hoehe
+
+
     def check_gewonnen(self):
         """
         Überprüft das Spielbrett nach jedem Spielzug auf eine der beiden Gewinnvarianten.
@@ -132,33 +140,72 @@ class VierGewinnt:
         wird abgebrochen.
         """
 
-        while True:
+        print("Willkommen bei 4 Gewinnt - vorab musst du festlegen, ob du gegen den Computer oder gegen einen Freund spielst:")
 
-            for i in self.spielbrett:
-                print(i)
-            if self.check_gewonnen() is not None:
-                break
+        spieleranzahl = int(input(f'Wähle 1 für ein Spiel gegen den Computer, oder 2 für ein Spiel gegen deinen Freund: '))
 
-            spl = int(input(f'Spieler 1 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
-            
-            if spl > -1 and spl < self.breite:
-                self.spielzug_machen('X', spl)
+        if spieleranzahl == 2:
+            while True:
+
+                for i in self.spielbrett:
+                    print(i)
+                if self.check_gewonnen() is not None:
+                    break
+
+                spl = int(input(f'Spieler 1 – wähle eine Spalte von 1 bis {self.breite} : ')) - 1
+
+                if spl > -1 and spl < self.breite:
+                    self.spielzug_machen('X', spl)
+                else:
+                    print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+
+                for i in self.spielbrett:
+                    print(i)
+                if self.check_gewonnen() is not None:
+                    break
+
+                spl = int(input(f'Spieler 2 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
+
+                if spl > -1 and spl < self.breite:
+                    self.spielzug_machen('O', spl)
+                else:
+                    print(f'Bitte geben Sie in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+
+            print(f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
+
+        elif spieleranzahl == 1:
+            print("Humans first - Du beginnst und das ist euer Spielfeld:")
+            while True:
+
+                for i in self.spielbrett:
+                    print(i)
+                if self.check_gewonnen() is not None:
+                    break
+
+                spl = int(input(f'Wähle eine Spalte von 1 bis {self.breite} : ')) - 1
+
+                if spl > -1 and spl < self.breite:
+                    self.spielzug_machen('X', spl)
+                else:
+                    print(f'Spielzug verschenkt! Gib in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+
+                for i in self.spielbrett:
+                    print(i)
+                if self.check_gewonnen() is not None:
+                    break
+
+                computer = randint(0, self.breite-1)
+                print("Der Computer wählt die Spalte ", computer + 1)
+                self.spielzug_machen('O', computer)
+
+            if self.check_gewonnen() == "Spieler 1":
+                print(f'Gratuliere {self.check_gewonnen()}, du hast den Computer geschlagen!')
             else:
-                print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+                print("Schade, diese Runde geht an den Computer - Versuchs doch noch mal :-) ")
 
-            for i in self.spielbrett:
-                print(i)
-            if self.check_gewonnen() is not None:
-                break
+        else:
+            print("Starte das Spiel erneut und wähle eine gültige Spieleranzahl (1 oder 2)")
 
-            spl = int(input(f'Spieler 2 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
-            
-            if spl > -1 and spl < self.breite:
-                self.spielzug_machen('O', spl)
-            else:
-                print(f'Bitte geben Sie in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
-
-        print (f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
 
 if __name__ == '__main__':
     meinspiel = VierGewinnt(7,7)
