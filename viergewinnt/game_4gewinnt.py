@@ -5,6 +5,7 @@ Spieler 2 hat den Spielstein O
 """
 from random import randint
 
+
 class VierGewinnt:
     """
     Klasse erstellt ein Spiel 4gewinnt
@@ -13,7 +14,7 @@ class VierGewinnt:
         self.hoehe = hoehe
         self.breite = breite
         self.spielbrett = [[' ' for x in range(breite)] for i in range(hoehe)]
-        self.__gespielte_Steine = 0
+        self.gespielte_Steine = 0
 
     def get_spalte(self, index: int):
         """
@@ -80,13 +81,11 @@ class VierGewinnt:
 
         """
 
-        if ' ' not in self.get_spalte(spl):
-            return self.spielbrett
         i = self.hoehe - 1
         while self.spielbrett[i][spl] != ' ':
             i -= 1
         self.spielbrett[i][spl] = team
-        self.__gespielte_Steine += 1
+        self.gespielte_Steine += 1
         return self.spielbrett
 
     def check_gewonnen(self):
@@ -95,34 +94,34 @@ class VierGewinnt:
         4 X oder O in einer Reihe (Reihe, Spalte, Diagonale).
         Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.
         """
-        vier_in_einer_reihe_X = [['X', 'X', 'X', 'X']]
-        vier_in_einer_reihe_O = [['O', 'O', 'O', 'O']]
+        vier_in_einer_reihe_x = [['X', 'X', 'X', 'X']]
+        vier_in_einer_reihe_o = [['O', 'O', 'O', 'O']]
 
         # Reihencheck:
         for i in range(self.hoehe):
             for j in range(self.breite - 3):
-                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_X:
+                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_x:
                     return "Spieler 1"
 
-                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_O:
+                if self.get_reihe(i)[j:j + 4] in vier_in_einer_reihe_o:
                     return "Spieler 2"
 
         # Spaltencheck:
         for i in range(self.breite):
             for j in range(self.hoehe - 3):
-                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_X:
+                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_x:
                     return "Spieler 1"
 
-                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_O:
+                if self.get_spalte(i)[j:j + 4] in vier_in_einer_reihe_o:
                     return "Spieler 2"
 
         # Diagonalencheck:
         for i in self.get_diagonale():
             for j, _ in enumerate(i):
-                if i[j:j + 4] in vier_in_einer_reihe_X:
+                if i[j:j + 4] in vier_in_einer_reihe_x:
                     return "Spieler 1"
 
-                if i[j:j + 4] in vier_in_einer_reihe_O:
+                if i[j:j + 4] in vier_in_einer_reihe_o:
                     return "Spieler 2"
 
         return None
@@ -133,7 +132,7 @@ class VierGewinnt:
         """
         maxspielsteine = self.breite*self.hoehe
 
-        if self.__gespielte_Steine == maxspielsteine:
+        if self.gespielte_Steine >= maxspielsteine:
             return True
         else:
             return None
@@ -147,7 +146,7 @@ class VierGewinnt:
         print("Willkommen bei 4 Gewinnt - vorab musst du festlegen, ob du gegen den Computer oder gegen einen Freund spielst:")
         spieleranzahl = int(input(f'Wähle 1 für ein Spiel gegen den Computer, oder 2 für ein Spiel gegen deinen Freund: '))
 
-        if spieleranzahl == 2:
+        if spieleranzahl == 2: #Spieleranzahl: 2 -> Mensch gegen Mensch
             while True:
 
                 for i in self.spielbrett:
@@ -186,7 +185,7 @@ class VierGewinnt:
 
             print(f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
 
-        elif spieleranzahl == 1:
+        elif spieleranzahl == 1: # Spieleranzahl 1 -> Mensch gegen Computer
             print("Humans first - Du beginnst und das ist euer Spielfeld:")
             while True:
 
@@ -201,7 +200,7 @@ class VierGewinnt:
                 spl = int(input(f'Wähle eine Spalte von 1 bis {self.breite} : ')) - 1
 
                 if spl > -1 and spl < self.breite and self.spielbrett[0][spl] == ' ':
-                    self.spielzug_machen('O', spl)
+                    self.spielzug_machen('X', spl)
                 elif spl > -1 and spl < self.breite and self.spielbrett[0][spl] != ' ':
                     print(f'Diese Spalte ist voll. Wähle in der nächsten Runde ein leeres Feld.')
                 else:
@@ -216,8 +215,12 @@ class VierGewinnt:
                     return None
 
                 computer = randint(0, self.breite-1)
-                print("Der Computer wählt die Spalte ", computer + 1)
-                self.spielzug_machen('O', computer)
+                if self.spielbrett[0][computer] == ' ':
+                    print("Der Computer wählt die Spalte ", computer + 1)
+                    self.spielzug_machen('O', computer)
+                else:
+                    print("Volle Spalte - Der Computer hat den Spielzug verschenkt.")
+
 
             if self.check_gewonnen() == "Spieler 1":
                 print(f'Gratuliere {self.check_gewonnen()}, du hast den Computer geschlagen!')
