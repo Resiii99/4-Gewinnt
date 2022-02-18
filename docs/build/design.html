@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
-    <link rel="next" title="viergewinnt" href="modules.html" />
+    <link rel="next" title="Test" href="test.html" />
     <link rel="prev" title="Welcome to Vier gewinnt’s documentation!" href="index.html" /> 
 </head>
 
@@ -86,7 +86,16 @@
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#strukturierung">Strukturierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#durchfuhrung-von-spielzugen">Durchführung von Spielzügen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uberprufen-auf-gewinn">Überprüfen auf Gewinn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-eines-spiels">Start eines Spiels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#computergegner">Computergegner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unentschieden">Unentschieden</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Test</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">viergewinnt</a></li>
 </ul>
 
@@ -154,6 +163,54 @@
             
   <section id="design">
 <h1>Design<a class="headerlink" href="#design" title="Link zu dieser Überschrift">¶</a></h1>
+<section id="strukturierung">
+<h2>Strukturierung<a class="headerlink" href="#strukturierung" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Im ersten Schritt haben wir anhand der Arbeitsangabe strukturiert, welche Funktionen unser Code erfüllen soll und was
+wir alles für deren Erfüllung benötigen. Die ersten Punkte waren daher das Design des Spielfelds, der Spielsteine und
+Spieler und des Spielablaufs. Für das Erstellen eines Spiels haben wir eine Klasse erstellt.</p>
+<p>Im Spielablauf wichtig war insbesondere das „Erkennen“ von 4 gleichen Spielsteinen in einer Reihe, Spalte oder Diagonale.
+Dazu wurden die Methoden get_spalte, get_reihe und get_diagonale erstellt, um diese 3 Strukturen darzustellen.</p>
+<p><img alt="img.png" src="_images/img.png" /></p>
+</section>
+<section id="durchfuhrung-von-spielzugen">
+<h2>Durchführung von Spielzügen<a class="headerlink" href="#durchfuhrung-von-spielzugen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Im nächsten Schritt haben wir das Durchführen eines Spielzugs entwickelt. Wichtig war dabei, dass einerseits der richtige
+Spielstein (X oder O) ausgewählt wird und andererseits, dass der Spielstein an die unterste freie Stelle in der Spalte
+rutschen muss.</p>
+<p><img alt="img_1.png" src="_images/img_1.png" /></p>
+</section>
+<section id="uberprufen-auf-gewinn">
+<h2>Überprüfen auf Gewinn<a class="headerlink" href="#uberprufen-auf-gewinn" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Anschließend wurde die Funktion eingebaut, dass nach dem Durchführen des Spielzugs überprüft werden kann, ob es einen
+Gewinn gibt – jeweils in einer Reihe, Spalte oder Diagonale. Wenn es keinen Gewinn gibt, soll das Spiel weiterlaufen.</p>
+<p><img alt="img_2.png" src="_images/img_2.png" /></p>
+</section>
+<section id="start-eines-spiels">
+<h2>Start eines Spiels<a class="headerlink" href="#start-eines-spiels" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Danach wurde das tatsächliche Starten eines Spiels designed.
+Dazu soll ein Spieler/eine Spielerin zum Input und damit zur Eingabe einer Zahl zwischen 1 und 7 aufgefordert werden –
+der „Indexzahl“ für die Spalte, an deren Stelle er oder sie einen Spielstein einwirft. Das soll jedoch nur geschehen,
+wenn nicht zuvor bereits ein Gewinn ermittelt wurde. Deshalb wurde bereits im Anfang die Gewinnüberprüfung eingebaut,
+damit anschließend in sich wiederholenden Schleifen durchgespielt werden kann.</p>
+<p>Wir haben uns dazu entschieden, dass der Versuch eines ungültigen Spielzugs zum Verlust der „Chance“ führt und der
+Spielzug nicht wiederholt werden darf. Stattdessen ist der andere Spieler an der Reihe.
+Nach jedem Spielzug wird überprüft, ob es einen Gewinn gibt. Wurde ein Gewinn ermittelt, wird das Spiel beendet und
+die Person, die gewonnen hat, wird genannt.</p>
+<p><img alt="img_3.png" src="_images/img_3.png" /></p>
+</section>
+<section id="computergegner">
+<h2>Computergegner<a class="headerlink" href="#computergegner" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Nachdem der Code ausführlich überprüft wurde, haben wir noch die Möglichkeit eines Computergegners eingebaut. Hierzu
+war insbesondere wichtig, dass der Gegner zwar keine intelligenten, aber doch gültige Züge durchführen muss und dass es
+zuvor ein Festlegen des Spielmodus (2 menschliche Spieler oder 1 Spieler gegen Computer) geben muss.</p>
+<p><img alt="img_5.png" src="_images/img_5.png" /></p>
+<p><img alt="img_7.png" src="_images/img_7.png" /></p>
+</section>
+<section id="unentschieden">
+<h2>Unentschieden<a class="headerlink" href="#unentschieden" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Zum Schluss wurde noch die Beendigung des Spiels bei einem vollen Spielfeld ohne Gewinn definiert:</p>
+<p><img alt="img_4.png" src="_images/img_4.png" /></p>
+</section>
 </section>
 
 
@@ -164,7 +221,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="viergewinnt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="test.html" class="btn btn-neutral float-right" title="Test" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Vier gewinnt’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

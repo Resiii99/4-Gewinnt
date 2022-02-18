@@ -11,6 +11,7 @@ Welcome to Vier gewinnt's documentation!
    :caption: Contents:
 
    design
+   test
    modules
 
 Indices and tables
