@@ -139,9 +139,9 @@ class VierGewinnt:
 
     def spiel_starten(self):
         """
-        Startet ein Spiel. Das Spielfeld wird dargestellt, die Spieler werden nacheinander zum Input aufgefordert und
-        ihre Spielzüge werden durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers
-        wird abgebrochen.
+        Startet ein Spiel. Das Spielfeld wird dargestellt, es wird der Spielmodus (Mensch gegen Mensch oder Mensch gegen
+        Computer) festgelegt. Die Spieler werden nacheinander zum Input aufgefordert und ihre Spielzüge werden
+        durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers wird abgebrochen.
         """
         print("Willkommen bei 4 Gewinnt - vorab musst du festlegen, ob du gegen den Computer oder gegen einen Freund spielst:")
         spieleranzahl = int(input(f'Wähle 1 für ein Spiel gegen den Computer, oder 2 für ein Spiel gegen deinen Freund: '))
@@ -154,7 +154,7 @@ class VierGewinnt:
                 if self.check_gewonnen() is not None:
                     break
                 if self.check_unentschieden() is True:
-                    print("Unentschieden - Das spiel ist Vorbei!")
+                    print("Unentschieden - Das spiel ist vorbei!")
                     return None
 
                 spl = int(input(f'Spieler 1 – wähle eine Spalte von 1 bis {self.breite} : ')) - 1
@@ -164,14 +164,14 @@ class VierGewinnt:
                 elif spl > -1 and spl < self.breite and self.spielbrett[0][spl] != ' ':
                     print(f'Diese Spalte ist voll. Wähle in der nächsten Runde ein leeres Feld.')
                 else:
-                    print(f'Bitte geben Sie  in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+                    print(f'Bitte gib in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
                 for i in self.spielbrett:
                     print(i)
                 if self.check_gewonnen() is not None:
                     break
                 if self.check_unentschieden() is True:
-                    print("Unentschieden - Das spiel ist Vorbei!")
+                    print("Unentschieden - Das spiel ist vorbei!")
                     return None
 
                 spl = int(input(f'Spieler 2 – bitte Spalte von 1 bis {self.breite} auswählen: ')) - 1
@@ -181,12 +181,12 @@ class VierGewinnt:
                 elif spl > -1 and spl < self.breite and self.spielbrett[0][spl] != ' ':
                     print(f'Diese Spalte ist voll. Wähle in der nächsten Runde ein leeres Feld.')
                 else:
-                    print(f'Bitte geben Sie in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
+                    print(f'Bitte gib in der nächsten Runde eine Zahl zwischen 1 und {self.breite} ein!')
 
             print(f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
 
         elif spieleranzahl == 1: # Spieleranzahl 1 -> Mensch gegen Computer
-            print("Humans first - Du beginnst und das ist euer Spielfeld:")
+            print("Humans first - du beginnst und das ist euer Spielfeld:")
             while True:
 
                 for i in self.spielbrett:
