@@ -1,8 +1,4 @@
 import unittest
-<<<<<<< HEAD
-=======
-
->>>>>>> eb5802beaf9d2538e36ce1ae05329461fd2e58f1
 from viergewinnt.game_4gewinnt import VierGewinnt
 
 class vierGewinntTest(unittest.TestCase):
@@ -16,12 +12,6 @@ class vierGewinntTest(unittest.TestCase):
         self.ViergewinntB = VierGewinnt(6, 7)
         self.ViergewinntC = VierGewinnt(6, 7)
         self.ViergewinntD = VierGewinnt(6, 7)
-        self.ViergewinntE = VierGewinnt(6, 7)
-        self.ViergewinntF = VierGewinnt(6, 7)
-        self.ViergewinntG = VierGewinnt(6, 7)
-        self.ViergewinntH = VierGewinnt(6, 7)
-
-
 
 ### Indexierung des Spielfelds ###
 
@@ -216,9 +206,6 @@ class vierGewinntTest(unittest.TestCase):
 
         self.ViergewinntD.gespielte_Steine = 48
         self.assertEqual(self.ViergewinntD.check_unentschieden(), True)
-
-    #def test_spiel_starten(self):
-        #self.ViergewinntA.spiel_starten()
 
 if __name__ == '__main__':
     unittest.main()
