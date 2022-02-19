@@ -1,17 +1,26 @@
 import unittest
+<<<<<<< HEAD
+=======
+
+>>>>>>> eb5802beaf9d2538e36ce1ae05329461fd2e58f1
 from viergewinnt.game_4gewinnt import VierGewinnt
 
 class vierGewinntTest(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.ViergewinntS = VierGewinnt(4, 5)
-        self.ViergewinntM = VierGewinnt(6, 7)
-        self.ViergewinntL = VierGewinnt(8, 9)
-        self.ViergewinntQ = VierGewinnt(6, 7)
+        self.ViergewinntS = VierGewinnt(4,5)
+        self.ViergewinntM = VierGewinnt(6,7)
+        self.ViergewinntL = VierGewinnt(8,9)
+        self.ViergewinntQ = VierGewinnt(6,7)
         self.ViergewinntA = VierGewinnt(6, 7)
         self.ViergewinntB = VierGewinnt(6, 7)
         self.ViergewinntC = VierGewinnt(6, 7)
         self.ViergewinntD = VierGewinnt(6, 7)
+        self.ViergewinntE = VierGewinnt(6, 7)
+        self.ViergewinntF = VierGewinnt(6, 7)
+        self.ViergewinntG = VierGewinnt(6, 7)
+        self.ViergewinntH = VierGewinnt(6, 7)
+
 
 
 ### Indexierung des Spielfelds ###
@@ -94,15 +103,9 @@ class vierGewinntTest(unittest.TestCase):
 
         self.assertEqual(spielzugD, ergD)
 
-### Gewinner-Ermittlung ###
+### Überprüfung ob bereits ein Gewinner vorliegt ###
 
     def test_check_gewonnen(self):
-        """
-        Funktion prüft in jeder Reihe Spalte und Diagonale, ob bereits ein Gewinner vorliegt.
-        Returns
-        ------
-        Testergebnis
-        """
 
         ### Sieg in einer Reihe von Spieler mit Stein "O" ###
 
@@ -158,6 +161,7 @@ class vierGewinntTest(unittest.TestCase):
         pruefungM = self.ViergewinntM.check_gewonnen()
         self.assertEqual(pruefungM, "Spieler 1")
 
+
         ### Kein Gewinner -> Erwartung None ###
 
         self.ViergewinntB.spielzug_machen("O", 0)
@@ -200,16 +204,7 @@ class vierGewinntTest(unittest.TestCase):
         pruefungC = self.ViergewinntC.check_gewonnen()
         self.assertEqual(pruefungC, "Spieler 2")
 
-### Prüfung auf Unentschieden ###
-
     def test_check_unentschieden(self):
-        """
-        Funktion prüft ob das Spielfeld voll ist und somit ein Unentschieden vorliegt.
-        Returns
-        ------
-        Testergebnis
-        """
-
         self.ViergewinntA.gespielte_Steine = 42
         self.assertEqual(self.ViergewinntA.check_unentschieden(), True)
 
@@ -221,6 +216,9 @@ class vierGewinntTest(unittest.TestCase):
 
         self.ViergewinntD.gespielte_Steine = 48
         self.assertEqual(self.ViergewinntD.check_unentschieden(), True)
+
+    #def test_spiel_starten(self):
+        #self.ViergewinntA.spiel_starten()
 
 if __name__ == '__main__':
     unittest.main()

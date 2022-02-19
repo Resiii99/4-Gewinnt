@@ -85,6 +85,8 @@
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="design.html">Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Test</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">viergewinnt</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">viergewinnt package</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
@@ -184,6 +186,12 @@ Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="viergewinnt.game_4gewinnt.VierGewinnt.check_unentschieden">
+<span class="sig-name descname"><span class="pre">check_unentschieden</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viergewinnt/game_4gewinnt.html#VierGewinnt.check_unentschieden"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#viergewinnt.game_4gewinnt.VierGewinnt.check_unentschieden" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Wenn das Spielfeld voll ist, soll das Spiel mit einem Unentschieden beendet werden.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="viergewinnt.game_4gewinnt.VierGewinnt.get_diagonale">
 <span class="sig-name descname"><span class="pre">get_diagonale</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viergewinnt/game_4gewinnt.html#VierGewinnt.get_diagonale"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#viergewinnt.game_4gewinnt.VierGewinnt.get_diagonale" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Gibt alle Diagonalen im Spiel aus</p>
@@ -228,9 +236,9 @@ Wenn kein Gewinn eruiert wird, soll keine Ausgabe erfolgen.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="viergewinnt.game_4gewinnt.VierGewinnt.spiel_starten">
 <span class="sig-name descname"><span class="pre">spiel_starten</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/viergewinnt/game_4gewinnt.html#VierGewinnt.spiel_starten"><span class="viewcode-link"><span class="pre">[Quellcode]</span></span></a><a class="headerlink" href="#viergewinnt.game_4gewinnt.VierGewinnt.spiel_starten" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Startet ein Spiel. Das Spielfeld wird dargestellt, die Spieler werden nacheinander zum Input aufgefordert und
-ihre Spielzüge werden durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers
-wird abgebrochen.</p>
+<dd><p>Startet ein Spiel. Das Spielfeld wird dargestellt, es wird der Spielmodus (Mensch gegen Mensch oder Mensch gegen
+Computer) festgelegt. Die Spieler werden nacheinander zum Input aufgefordert und ihre Spielzüge werden
+durchgeführt. Nach jeder Durchführung wird auf Gewinn überprüft. Bei Gewinn eines Spielers wird abgebrochen.</p>
 </dd></dl>
 
 <dl class="py method">

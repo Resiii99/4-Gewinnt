@@ -12,6 +12,7 @@ Welcome to Vier gewinnt's documentation!
 
    design
    test
+   ki
    modules
 
 Indices and tables
