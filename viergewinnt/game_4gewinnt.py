@@ -15,6 +15,7 @@ class VierGewinnt:
         self.breite = breite
         self.spielbrett = [[' ' for x in range(breite)] for i in range(hoehe)]
         self.gespielte_Steine = 0
+        self.spieleranzahl = 0
 
     def get_spalte(self, index: int):
         """
@@ -144,9 +145,9 @@ class VierGewinnt:
         wird abgebrochen.
         """
         print("Willkommen bei 4 Gewinnt - vorab musst du festlegen, ob du gegen den Computer oder gegen einen Freund spielst:")
-        spieleranzahl = int(input(f'Wähle 1 für ein Spiel gegen den Computer, oder 2 für ein Spiel gegen deinen Freund: '))
+        self.spieleranzahl = int(input(f'Wähle 1 für ein Spiel gegen den Computer, oder 2 für ein Spiel gegen deinen Freund: '))
 
-        if spieleranzahl == 2: #Spieleranzahl: 2 -> Mensch gegen Mensch
+        if self.spieleranzahl == 2: #Spieleranzahl: 2 -> Mensch gegen Mensch
             while True:
 
                 for i in self.spielbrett:
@@ -185,7 +186,7 @@ class VierGewinnt:
 
             print(f'Gratuliere {self.check_gewonnen()}, du hast gewonnen!')
 
-        elif spieleranzahl == 1: # Spieleranzahl 1 -> Mensch gegen Computer
+        elif self.spieleranzahl == 1: # Spieleranzahl 1 -> Mensch gegen Computer
             print("Humans first - Du beginnst und das ist euer Spielfeld:")
             while True:
 
