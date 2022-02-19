@@ -42,13 +42,8 @@ die Person, die gewonnen hat, wird genannt.
 ![img_3.png](img_3.png)
 
 ## Computergegner
-Nachdem der Code ausführlich überprüft wurde, haben wir noch die Möglichkeit eines Computergegners eingebaut. Hierzu 
-war insbesondere wichtig, dass der Gegner zwar keine intelligenten, aber doch gültige Züge durchführen muss und dass es
-zuvor ein Festlegen des Spielmodus (2 menschliche Spieler oder 1 Spieler gegen Computer) geben muss. 
-
-![img_5.png](img_5.png)
-
-![img_7.png](img_7.png)
+Nachdem der Code ausführlich überprüft wurde, haben wir noch die Möglichkeit eines Computergegners eingebaut. 
+Dieser wird in der Datei ki.md ausführlicher beschrieben. 
 
 ## Unentschieden
 Zum Schluss wurde noch die Beendigung des Spiels bei einem vollen Spielfeld ohne Gewinn definiert:
