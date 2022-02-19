@@ -1,6 +1,4 @@
 import unittest
-from unittest.mock import Mock
-
 from viergewinnt.game_4gewinnt import VierGewinnt
 
 class vierGewinntTest(unittest.TestCase):
