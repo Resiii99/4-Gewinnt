@@ -9,4 +9,4 @@ Spielt man gegen den Computer, startet Spieler 1 (= Mensch) mit der Wahl der Spa
 Beim Versuch eines ungültigen Spielzugs wird das Recht auf einen Spielzug verwirkt und der andere Spieler ist wieder an der Reihe. 
 
 Nach jedem Spielzug wird automatisch überprüft, ob es einen Gewinner oder ein Unentschieden gibt. Wenn ja, wird das Spiel beendet und eine Mitteilung eingeblendet. 
-Wenn es noch keinen Gewinner gibt, wird das neue Spielfeld nach dem letzten Einwurf eingeblendet und der andere Spieler wird zum nächsten Spielzug aufgefordert. 
+Wenn es noch keinen Gewinner gibt, wird das neue Spielfeld nach dem letzten Einwurf eingeblendet und der andere Spieler wird zum nächsten Spielzug aufgefordert. Sollte das Spielfeld mit Steinen gefüllt sein, ohne 4 in einer Reihe zu haben, gibt es ein Unentschieden und das Spiel wird beendet.
